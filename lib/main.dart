@@ -1,23 +1,26 @@
+import 'package:app_agachaditos/ui/help/helper.dart';
+import 'package:app_agachaditos/ui/screen/screen_login.dart';
 import 'package:flutter/material.dart';
-
 import 'ui/routes/screen_route.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp(ScreenLogin.routePage));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  String routeInit;
+  MyApp(this.routeInit, {super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: Helper.globalContext,
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        iconTheme: IconThemeData(color: Color(0xffd62f2e)),
-        //Color icono black
-        appBarTheme: AppBarTheme(color: Color(0xffd62f2e)),
+        iconTheme: const IconThemeData(color: Color(0xffd62f2e)),
+        appBarTheme: const AppBarTheme(color: Color(0xffd62f2e)),
         colorScheme: const ColorScheme.light(primary: Color(0xffd62f2e)),
         useMaterial3: true,
         textTheme: const TextTheme(
@@ -27,6 +30,7 @@ class MyApp extends StatelessWidget {
             labelLarge: TextStyle(color: Colors.black12) //blanco
         ),
       ),
+      initialRoute: routeInit,
       routes: routes(),
 
     );
