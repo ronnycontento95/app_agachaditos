@@ -1,4 +1,5 @@
 import 'package:app_agachaditos/ui/screen/screen_dishes.dart';
+import 'package:app_agachaditos/ui/screen/screen_list_dishes.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
@@ -29,12 +30,62 @@ class ScreenHome extends StatelessWidget {
                 width: 2,
               ),
             ),
-            child: const SingleChildScrollView(
+            child:  SingleChildScrollView(
               child: Column(
-                children: [Header(), ResponsiveGridView()],
+                children: [_cardOrdes(),_cardPayment(), ResponsiveGridView()],
               ),
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _cardOrdes(){
+    return GestureDetector(
+      onTap: (){
+        Helper().nextPageViewTransition(ScreenListDishes.routePage);
+      },
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        color: Colors.lightBlue,
+        margin: const EdgeInsets.only(bottom: 10),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              height: 25,
+              child: Text("ORDENES"),
+            ),
+            Spacer(),
+            Icon(Icons.arrow_circle_right_outlined, size: 25,color: Colors.red,)
+
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _cardPayment(){
+    return GestureDetector(
+      onTap: (){
+        Helper().nextPageViewTransition(ScreenListDishes.routePage);
+      },
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        color: Colors.lightBlue,
+        margin: const EdgeInsets.only(bottom: 10),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              height: 25,
+              child: Text("COBROS"),
+            ),
+            Spacer(),
+            Icon(Icons.arrow_circle_right_outlined, size: 25,color: Colors.red,)
+
+          ],
         ),
       ),
     );
@@ -99,31 +150,3 @@ class ResponsiveGridView extends StatelessWidget {
   }
 }
 
-class Header extends StatelessWidget {
-  const Header({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            color: Colors.red,
-            height: 50,
-            width: 90,
-            child: Text("PEDIDOS"),
-          ),
-          Container(
-            color: Colors.red,
-            height: 50,
-            width: 90,
-            child: Text("PEDIDOS"),
-          )
-        ],
-      ),
-    );
-  }
-}

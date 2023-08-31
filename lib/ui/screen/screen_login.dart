@@ -1,6 +1,5 @@
 import 'package:app_agachaditos/ui/screen/screen_home.dart';
 import 'package:app_agachaditos/ui/widgets/widget_text_form.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import '../help/helper.dart';
@@ -17,10 +16,13 @@ class ScreenLogin extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.white,
         body: SafeArea(
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [userFormText(), userFormText(), _buttonLogin()],
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [userFormText(), userFormText(), _buttonLogin()],
+              ),
             ),
           ),
         ),

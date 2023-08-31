@@ -183,10 +183,10 @@ class _WidgetTextFormState extends State<WidgetTextForm> {
               errorBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.red),
                   borderRadius: BorderRadius.all(Radius.circular(10.0))),
-              focusedBorder: OutlineInputBorder(
+              focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(
                       color:  Colors.red),
-                  borderRadius: const BorderRadius.all(Radius.circular(10.0))),
+                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
               focusedErrorBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.red),
                   borderRadius: BorderRadius.all(Radius.circular(10.0))),

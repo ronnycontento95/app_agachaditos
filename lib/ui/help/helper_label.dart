@@ -1,6 +1,8 @@
 class HelperLabel{
   //Route
-  static const routeScreenLogin = "routeScreenLogin";
-  static const routeScreenDishes = "routeScreenDishes";
-  static const routeScreenHome = "routeScreenHome";
+  static const routeScreenLogin = "ScreenLogin";
+  static const routeScreenDishes = "ScreenDishes";
+  static const routeScreenHome = "ScreenHome";
+  static const routeScreenListDishes = "ScreenListDishes";
+  static const routeScreenDetailDishes = "ScreenDetailDishes";
 }
