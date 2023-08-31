@@ -1,7 +1,8 @@
+import 'package:app_agachaditos/ui/screen/screen_dishes.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
+import '../help/helper.dart';
 import '../help/helper_label.dart';
 
 class ScreenHome extends StatelessWidget {
@@ -28,9 +29,9 @@ class ScreenHome extends StatelessWidget {
                 width: 2,
               ),
             ),
-            child: SingleChildScrollView(
+            child: const SingleChildScrollView(
               child: Column(
-                children: [Header(), const ResponsiveGridView()],
+                children: [Header(), ResponsiveGridView()],
               ),
             ),
           ),
@@ -70,21 +71,26 @@ class ResponsiveGridView extends StatelessWidget {
         itemCount: 12, // Número total de celdas
         itemBuilder: (BuildContext context, int index) {
           final color = Colors.primaries[index % Colors.primaries.length];
-          return Container(
-            color: color,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Icon(
-                  Icons.table_bar_outlined,
-                  color: Colors.white,
-                  size: 25,
-                ),
-                Text(
-                  "Mesa $index",
-                  style: TextStyle(color: Colors.white),
-                ),
-              ],
+          return GestureDetector(
+            onTap: (){
+              Helper().nextPageViewTransition(ScreenDishes.routePage);
+            },
+            child: Container(
+              color: color,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(
+                    Icons.table_bar_outlined,
+                    color: Colors.white,
+                    size: 25,
+                  ),
+                  Text(
+                    "Mesa $index",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
             ),
           );
         },
