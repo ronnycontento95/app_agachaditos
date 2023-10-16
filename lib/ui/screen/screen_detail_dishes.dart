@@ -53,7 +53,7 @@ class ScreenDetailDishes extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text("Loremmmmmmmmmmmmmmmmmmmmmmmmmmmmm"),
+              Text("lorem"),
               Spacer(),
               Text("5.30")
             ],

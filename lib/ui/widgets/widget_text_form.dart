@@ -108,7 +108,7 @@ class _WidgetTextFormState extends State<WidgetTextForm> {
               child: Text(
                 widget.labelTitle,
                 style: const TextStyle(
-                    color: Colors.red,
+                    color: Colors.black,
                     fontSize: 12),
               ))
               : const SizedBox(),
@@ -140,8 +140,8 @@ class _WidgetTextFormState extends State<WidgetTextForm> {
             decoration: InputDecoration(
               filled: true,
               fillColor: isSelectedText
-                  ?  Colors.red
-                  :  Colors.redAccent,
+                  ?  Colors.transparent
+                  :  Colors.transparent,
               contentPadding:
               const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
               enabledBorder: widget.borderEnable
@@ -176,8 +176,8 @@ class _WidgetTextFormState extends State<WidgetTextForm> {
               )
                   : null,
               hintText: widget.hintText,
-              focusColor:  Colors.red,
-              hintStyle: const TextStyle(color:  Colors.red),
+              focusColor:  Colors.black12,
+              hintStyle: const TextStyle(color:  Colors.black12),
               labelStyle: const TextStyle(fontWeight: FontWeight.w500),
               errorStyle: const TextStyle(color: Colors.red),
               errorBorder: const OutlineInputBorder(

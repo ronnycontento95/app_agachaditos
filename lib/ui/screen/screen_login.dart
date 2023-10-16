@@ -17,15 +17,26 @@ class ScreenLogin extends StatelessWidget {
         backgroundColor: Colors.white,
         body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(20.0),
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [userFormText(), userFormText(), _buttonLogin()],
+                children: [logonApp(),userFormText(), userFormText(), _buttonLogin()],
               ),
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget logonApp() {
+    return Center(
+      child: Column(
+        children: [
+          Icon(Icons.food_bank_sharp, size: 60,),
+          Text("Agachaditos.com")
+        ],
       ),
     );
   }
@@ -37,7 +48,7 @@ class ScreenLogin extends StatelessWidget {
       labelTitle: "Ingrese su usuario",
       keyboardType: TextInputType.emailAddress,
       // inputFormatters: formattersUser(),
-      hintText: 'Ingrese su usuario',
+      hintText: 'Ej: anonimo@gmail.com',
       fontSize: 16,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       colorWhenFocus: true,
@@ -54,6 +65,7 @@ class ScreenLogin extends StatelessWidget {
   Widget _buttonLogin() {
     return Container(
       width: double.infinity,
+      color: Colors.white,
       child: ElevatedButton(
           onPressed: () {
             Helper().nextPageViewTransition(ScreenHome.routePage);
