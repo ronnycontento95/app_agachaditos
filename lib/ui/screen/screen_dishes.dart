@@ -1,8 +1,10 @@
 import 'package:app_agachaditos/ui/help/helper.dart';
+import 'package:app_agachaditos/ui/provider/provider_principal.dart';
 import 'package:app_agachaditos/ui/screen/screen_home.dart';
 import 'package:app_agachaditos/ui/screen/screen_list_dishes.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../help/helper_label.dart';
 
@@ -12,12 +14,13 @@ class ScreenDishes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<ProviderPrincipal>().getDishes();
     return AnnotatedRegion(
       value: Colors.white,
       child: Scaffold(
         appBar: AppBar(
           title: const AutoSizeText(
-            "Pedidos",
+            "Pedidoss11111",
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
           ),
           leading: IconButton(
@@ -32,14 +35,14 @@ class ScreenDishes extends StatelessWidget {
         ),
         backgroundColor: Colors.white,
         body: SafeArea(
-          child: Container(
+          child: SizedBox(
             // color: Colors.red,
             width: double.infinity,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               // mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CardViewDishes(),
+                const CardViewDishes(),
                 _buttonDishes()
               ],
             ),
@@ -52,7 +55,7 @@ class ScreenDishes extends StatelessWidget {
   Widget _buttonDishes(){
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Container(
+      child: SizedBox(
           width: double.infinity,
           child: ElevatedButton(onPressed: (){
             Helper().nextPageViewTransition(ScreenListDishes.routePage);

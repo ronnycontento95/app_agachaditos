@@ -13,6 +13,6 @@ Map<String, WidgetBuilder> routes() {
     ScreenHome.routePage: (_) => const ScreenHome(),
     ScreenDishes.routePage: (_) => const ScreenDishes(),
     ScreenListDishes.routePage: (_) => const ScreenListDishes(),
-    ScreenDishes.routePage: (_) => ScreenDetailDishes()
+    ScreenDishes.routePage: (_) => const ScreenDishes()
   };
 }

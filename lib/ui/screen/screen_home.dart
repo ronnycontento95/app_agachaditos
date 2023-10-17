@@ -1,15 +1,28 @@
+import 'package:app_agachaditos/ui/provider/provider_principal.dart';
 import 'package:app_agachaditos/ui/screen/screen_dishes.dart';
 import 'package:app_agachaditos/ui/screen/screen_list_dishes.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../help/helper.dart';
 import '../help/helper_label.dart';
 
-class ScreenHome extends StatelessWidget {
+class ScreenHome extends StatefulWidget {
   const ScreenHome({Key? key}) : super(key: key);
   static const routePage = HelperLabel.routeScreenHome;
 
+  @override
+  State<ScreenHome> createState() => _ScreenHomeState();
+}
+
+class _ScreenHomeState extends State<ScreenHome> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    context.read<ProviderPrincipal>().getTable();
+  }
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion(
@@ -32,7 +45,7 @@ class ScreenHome extends StatelessWidget {
             ),
             child:  SingleChildScrollView(
               child: Column(
-                children: [_cardOrdes(),_cardPayment(), ResponsiveGridView()],
+                children: [_cardOrdes(),_cardPayment(), const ResponsiveGridView()],
               ),
             ),
           ),
