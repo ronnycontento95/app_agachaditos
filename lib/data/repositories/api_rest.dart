@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:app_agachaditos/data/response/response_api.dart';
 import 'package:app_agachaditos/ui/help/global_label.dart';
 import 'package:flutter/foundation.dart';
 
@@ -24,27 +25,6 @@ class ApiRest implements ApiInterface {
     final data = {"idUser": idUser};
 
     try {
-      // 404
-      await dio.post(url);
-    } on DioException catch (e) {
-      // The request was made and the server responded with a status code
-      // that falls out of the range of 2xx and is also not 304.
-      print("RESPONSE >>> DATA ${e.response!.data["error"]}");
-      callback(e.response!.data["error"], e.response!.data["error"]);
-
-      if (e.response != null) {
-        print(e.response!.data);
-        print(e.response!.headers);
-        print(e.response!.requestOptions);
-      } else {
-        // Something happened in setting up or sending the request that triggered an Error
-        print(e.requestOptions);
-        print(e.message);
-      }
-    }
-
-    try {
-      print('url >>>> ${url}');
       final response = await dio.post(
         url,
         data: data,
@@ -52,8 +32,16 @@ class ApiRest implements ApiInterface {
       if (kDebugMode) {
         print("RESPONSE >>> DATA ${response}");
       }
-    } on DioError catch (e) {
-      print('ERROR >>> $e');
+      if(response.data == null){
+        if (kDebugMode) {
+          print("ERROR >>> DATA NULL TABLE");
+        }
+      }
+      callback(response.data["error"],  ResponseApi.fromMap(response.data));
+    } on DioException catch (e) {
+      if (kDebugMode) {
+        print('ERROR >>> TABLE $e');
+      }
     }
   }
 

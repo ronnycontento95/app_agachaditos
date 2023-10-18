@@ -9,6 +9,12 @@ class L  extends ResponseApi{
     this.name,
   });
 
+
+  @override
+  String toString() {
+    return 'L{name: $name}';
+  }
+
   factory L.fromJson(String str) => L.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());

@@ -20,6 +20,7 @@ class ResponseApi {
     l: json["l"] == null ? [] : List<L>.from(json["l"]!.map((x) => L.fromMap(x))),
   );
 
+
   Map<String, dynamic> toMap() => {
     "error": error,
     "l": l == null ? [] : List<dynamic>.from(l!.map((x) => x.toMap())),

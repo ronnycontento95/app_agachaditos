@@ -1,22 +1,32 @@
+import 'package:app_agachaditos/data/response/response_api.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../domain/repositories/api_interface.dart';
 
-class ProviderPrincipal extends ChangeNotifier{
+class ProviderPrincipal extends ChangeNotifier {
   ApiInterface apiInterface;
+
   ProviderPrincipal(this.apiInterface);
+  List<ResponseApi>? listTable = [];
 
-
-  getTable(){
+  getTable() {
     apiInterface.responseConsultTable(1, (code, data) {
-      print('prueba >>>> ingeso $code');
-      print('prueba >>>> ingeso $data');
+      if (code == 0) {
+        addListTable(data);
+      }
       return null;
     });
   }
 
-  getDishes(){
-    apiInterface.responsePostDishes((code, data){
+  addListTable(ResponseApi table){
+    if(listTable!.isNotEmpty) listTable!.clear();
+    print('PRUEBA >>> INGRESO ${table.toJson()}');
+    listTable!.add(table);
+    notifyListeners();
+  }
+
+  getDishes() {
+    apiInterface.responsePostDishes((code, data) {
       print('prueba >>>> ingreso $data');
       return null;
     });

@@ -27,13 +27,14 @@ class _ScreenHomeState extends State<ScreenHome> {
   Widget build(BuildContext context) {
     return AnnotatedRegion(
       value: Colors.white,
+
       child: Scaffold(
         backgroundColor: Colors.white,
         body: SafeArea(
           child: Container(
             width: double.infinity,
             margin: const EdgeInsets.all(10),
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(5),
             height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
               color: Colors.white12,
@@ -45,7 +46,10 @@ class _ScreenHomeState extends State<ScreenHome> {
             ),
             child:  SingleChildScrollView(
               child: Column(
-                children: [_cardOrdes(),_cardPayment(), const ResponsiveGridView()],
+                children: [
+                  // _cardOrdes(),
+                  // _cardPayment(),
+                  const ResponsiveGridView()],
               ),
             ),
           ),
@@ -91,12 +95,12 @@ class _ScreenHomeState extends State<ScreenHome> {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               height: 25,
               child: Text("COBROS"),
             ),
-            Spacer(),
-            Icon(Icons.arrow_circle_right_outlined, size: 25,color: Colors.red,)
+            const Spacer(),
+            const Icon(Icons.arrow_circle_right_outlined, size: 25,color: Colors.red,)
 
           ],
         ),
@@ -110,6 +114,7 @@ class ResponsiveGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final prPrincipalRead = context.read<ProviderPrincipal>();
     final orientation = MediaQuery.of(context).orientation;
     final isTablet = MediaQuery.of(context).size.shortestSide >= 600;
 
@@ -128,11 +133,11 @@ class ResponsiveGridView extends StatelessWidget {
     );
 
     return SizedBox(
-      height: 900,
-      width: 900,
+      height: 400,
+      width: 300,
       child: GridView.builder(
         gridDelegate: gridDelegate,
-        itemCount: 12, // Número total de celdas
+        itemCount: prPrincipalRead.listTable!.length, // Número total de celdas
         itemBuilder: (BuildContext context, int index) {
           final color = Colors.primaries[index % Colors.primaries.length];
           return GestureDetector(
@@ -140,17 +145,20 @@ class ResponsiveGridView extends StatelessWidget {
               Helper().nextPageViewTransition(ScreenDishes.routePage);
             },
             child: Container(
-              color: color,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: color,
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Icon(
-                    Icons.table_bar_outlined,
+                    Icons.table_restaurant,
                     color: Colors.white,
                     size: 25,
                   ),
                   Text(
-                    "Mesa $index",
+                    "${prPrincipalRead.listTable![index].l![index].name}",
                     style: TextStyle(color: Colors.white),
                   ),
                 ],
