@@ -1,7 +1,7 @@
 import 'package:app_agachaditos/ui/screen/screen_detail_dishes.dart';
 import 'package:app_agachaditos/ui/screen/screen_dishes.dart';
 import 'package:app_agachaditos/ui/screen/screen_home.dart';
-import 'package:app_agachaditos/ui/screen/screen_list_dishes.dart';
+import 'package:app_agachaditos/ui/screen/screen_list_orden.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../screen/screen_login.dart';
@@ -12,7 +12,7 @@ Map<String, WidgetBuilder> routes() {
     ScreenLogin.routePage: (_) => const ScreenLogin(),
     ScreenHome.routePage: (_) => const ScreenHome(),
     ScreenDishes.routePage: (_) => const ScreenDishes(),
-    ScreenListDishes.routePage: (_) => const ScreenListDishes(),
+    ScreenListOrder.routePage: (_) => const ScreenListOrder(),
     ScreenDishes.routePage: (_) => const ScreenDishes()
   };
 }

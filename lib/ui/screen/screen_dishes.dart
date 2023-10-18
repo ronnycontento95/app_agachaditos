@@ -1,7 +1,7 @@
 import 'package:app_agachaditos/ui/help/helper.dart';
 import 'package:app_agachaditos/ui/provider/provider_principal.dart';
 import 'package:app_agachaditos/ui/screen/screen_home.dart';
-import 'package:app_agachaditos/ui/screen/screen_list_dishes.dart';
+import 'package:app_agachaditos/ui/screen/screen_list_orden.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -58,7 +58,7 @@ class ScreenDishes extends StatelessWidget {
       child: SizedBox(
           width: double.infinity,
           child: ElevatedButton(onPressed: (){
-            Helper().nextPageViewTransition(ScreenListDishes.routePage);
+            Helper().nextPageViewTransition(ScreenListOrder.routePage);
           }, child: Text("Guardar pedido"))),
     );
   }

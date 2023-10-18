@@ -4,32 +4,19 @@ import 'package:flutter/material.dart';
 
 import '../help/helper.dart';
 import '../help/helper_label.dart';
+import '../widgets/widget_bottomNavigatorBar.dart';
 
-class ScreenListDishes extends StatelessWidget {
-  const ScreenListDishes({Key? key}) : super(key: key);
-  static const routePage = HelperLabel.routeScreenListDishes;
+class ScreenListOrder extends StatelessWidget {
+  const ScreenListOrder({Key? key}) : super(key: key);
+  static const routePage = HelperLabel.routeScreenListOrder;
 
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion(
       value: Colors.white,
       child: Scaffold(
-        appBar: AppBar(
-          title: const AutoSizeText(
-            "Mis pedidos",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
-          ),
-          leading: IconButton(
-            color: Colors.black,
-            onPressed: () {
-              Helper().nextPageViewTransition(ScreenHome.routePage);
-            },
-            icon: const Icon(Icons.arrow_back_ios, size: 20),
-          ),
-          elevation: 0,
-          backgroundColor: Colors.white,
-        ),
         backgroundColor: Colors.white,
+        bottomNavigationBar: WidgetBottomNavigatorBar(),
         body: SafeArea(
           child: Container(
             // color: Colors.red,

@@ -1,7 +1,7 @@
 import 'package:app_agachaditos/ui/provider/provider_principal.dart';
 import 'package:app_agachaditos/ui/screen/screen_dishes.dart';
-import 'package:app_agachaditos/ui/screen/screen_list_dishes.dart';
-import 'package:auto_size_text/auto_size_text.dart';
+import 'package:app_agachaditos/ui/screen/screen_list_orden.dart';
+import 'package:app_agachaditos/ui/widgets/widget_bottomNavigatorBar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -23,6 +23,8 @@ class _ScreenHomeState extends State<ScreenHome> {
     super.initState();
     context.read<ProviderPrincipal>().getTable();
   }
+
+
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion(
@@ -30,6 +32,7 @@ class _ScreenHomeState extends State<ScreenHome> {
 
       child: Scaffold(
         backgroundColor: Colors.white,
+        bottomNavigationBar: WidgetBottomNavigatorBar(),
         body: SafeArea(
           child: Container(
             width: double.infinity,
@@ -44,12 +47,12 @@ class _ScreenHomeState extends State<ScreenHome> {
                 width: 2,
               ),
             ),
-            child:  SingleChildScrollView(
+            child:  const SingleChildScrollView(
               child: Column(
                 children: [
                   // _cardOrdes(),
                   // _cardPayment(),
-                  const ResponsiveGridView()],
+                  ResponsiveGridView()],
               ),
             ),
           ),
@@ -61,7 +64,7 @@ class _ScreenHomeState extends State<ScreenHome> {
   Widget _cardOrdes(){
     return GestureDetector(
       onTap: (){
-        Helper().nextPageViewTransition(ScreenListDishes.routePage);
+        Helper().nextPageViewTransition(ScreenListOrder.routePage);
       },
       child: Container(
         padding: const EdgeInsets.all(10),
@@ -86,7 +89,7 @@ class _ScreenHomeState extends State<ScreenHome> {
   Widget _cardPayment(){
     return GestureDetector(
       onTap: (){
-        Helper().nextPageViewTransition(ScreenListDishes.routePage);
+        Helper().nextPageViewTransition(ScreenListOrder.routePage);
       },
       child: Container(
         padding: const EdgeInsets.all(10),
@@ -114,7 +117,7 @@ class ResponsiveGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final prPrincipalRead = context.read<ProviderPrincipal>();
+    final prPrincipalRead = context.watch<ProviderPrincipal>();
     final orientation = MediaQuery.of(context).orientation;
     final isTablet = MediaQuery.of(context).size.shortestSide >= 600;
 
@@ -171,3 +174,4 @@ class ResponsiveGridView extends StatelessWidget {
   }
 }
 
+enum _SelectedTab { home, favorite, search, person }
