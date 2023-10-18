@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "881042766234",
+    "project_id": "agachaditosapp-a9d25",
+    "storage_bucket": "agachaditosapp-a9d25.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:881042766234:android:bb355e36a38135e3916223",
+        "android_client_info": {
+          "package_name": "com.example.app_agachaditos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "881042766234-re2pccsp4kls7rgplsnic230akpde7m0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.app_agachaditos",
+            "certificate_hash": "69ec9aa969b6724c064590bff0fa77253706220e"
+          }
+        },
+        {
+          "client_id": "881042766234-ab12oofejcitjpjjkag89fhjiuher8pj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiN7ITwLcixAPDssijeO-2n5lmQ3TDq28"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "881042766234-ab12oofejcitjpjjkag89fhjiuher8pj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

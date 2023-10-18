@@ -1,6 +1,10 @@
+
+
+import 'package:app_agachaditos/ui/provider/provider_principal.dart';
 import 'package:app_agachaditos/ui/screen/screen_home.dart';
 import 'package:app_agachaditos/ui/widgets/widget_text_form.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../help/helper.dart';
 import '../help/helper_label.dart';
@@ -21,7 +25,7 @@ class ScreenLogin extends StatelessWidget {
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [logonApp(),userFormText(), userFormText(), _buttonLogin()],
+                children: [logonApp(),userFormText(), userFormText(), _buttonLogin(), ButtonGoogle()],
               ),
             ),
           ),
@@ -31,7 +35,7 @@ class ScreenLogin extends StatelessWidget {
   }
 
   Widget logonApp() {
-    return Center(
+    return const Center(
       child: Column(
         children: [
           Icon(Icons.food_bank_sharp, size: 60,),
@@ -71,6 +75,25 @@ class ScreenLogin extends StatelessWidget {
             Helper().nextPageViewTransition(ScreenHome.routePage);
           },
           child: Text("Ingresar")),
+    );
+  }
+}
+
+class ButtonGoogle extends StatelessWidget {
+  const ButtonGoogle({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final prPrincipalRead = context.read<ProviderPrincipal>();
+    return Container(
+      width: double.infinity,
+      // color: Colors.white,
+      child: ElevatedButton(
+          onPressed: () {
+            prPrincipalRead.signInWithGoogle();
+
+          },
+          child: const Text("Google")),
     );
   }
 }

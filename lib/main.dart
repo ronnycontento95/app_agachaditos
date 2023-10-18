@@ -1,19 +1,21 @@
 import 'package:app_agachaditos/ui/help/helper.dart';
 import 'package:app_agachaditos/ui/routes/screen_provider.dart';
 import 'package:app_agachaditos/ui/screen/screen_login.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'ui/routes/screen_route.dart';
 
-void main() {
-  runApp(MyApp(ScreenLogin.routePage));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();runApp(MyApp(ScreenLogin.routePage));
 }
 
 class MyApp extends StatelessWidget {
   String routeInit;
   MyApp(this.routeInit, {super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           iconTheme: const IconThemeData(color: Color(0xffd62f2e)),
           appBarTheme: const AppBarTheme(color: Color(0xffd62f2e)),
-          colorScheme: const ColorScheme.light(primary: Color(0xffd62f2e)),
+          colorScheme: const ColorScheme.light(primary: Colors.black),
           useMaterial3: true,
           textTheme: const TextTheme(
               displayLarge: TextStyle(color: Colors.black12), //blanco
