@@ -1,7 +1,6 @@
 import 'package:app_agachaditos/ui/provider/provider_principal.dart';
 import 'package:app_agachaditos/ui/screen/screen_dishes.dart';
-import 'package:app_agachaditos/ui/screen/screen_list_orden.dart';
-import 'package:app_agachaditos/ui/widgets/widget_bottomNavigatorBar.dart';
+import 'package:app_agachaditos/ui/screen/screen_order_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +18,6 @@ class ScreenHome extends StatefulWidget {
 class _ScreenHomeState extends State<ScreenHome> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     context.read<ProviderPrincipal>().getTable();
   }
@@ -32,7 +30,6 @@ class _ScreenHomeState extends State<ScreenHome> {
 
       child: Scaffold(
         backgroundColor: Colors.white,
-        bottomNavigationBar: WidgetBottomNavigatorBar(),
         body: SafeArea(
           child: Container(
             width: double.infinity,
@@ -70,10 +67,10 @@ class _ScreenHomeState extends State<ScreenHome> {
         padding: const EdgeInsets.all(10),
         color: Colors.lightBlue,
         margin: const EdgeInsets.only(bottom: 10),
-        child: Row(
+        child: const Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               height: 25,
               child: Text("ORDENES"),
             ),
@@ -95,15 +92,15 @@ class _ScreenHomeState extends State<ScreenHome> {
         padding: const EdgeInsets.all(10),
         color: Colors.lightBlue,
         margin: const EdgeInsets.only(bottom: 10),
-        child: Row(
+        child: const Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
               height: 25,
               child: Text("COBROS"),
             ),
-            const Spacer(),
-            const Icon(Icons.arrow_circle_right_outlined, size: 25,color: Colors.red,)
+            Spacer(),
+            Icon(Icons.arrow_circle_right_outlined, size: 25,color: Colors.red,)
 
           ],
         ),
@@ -162,7 +159,7 @@ class ResponsiveGridView extends StatelessWidget {
                   ),
                   Text(
                     "${prPrincipalRead.listTable![index].l![index].name}",
-                    style: TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white),
                   ),
                 ],
               ),

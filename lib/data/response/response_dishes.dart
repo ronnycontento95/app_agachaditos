@@ -1,29 +1,22 @@
 import 'dart:convert';
 
-import 'package:app_agachaditos/data/response/response_api.dart';
-
-import 'dart:convert';
-
-import 'response_tables.dart';
-
-class ResponseApi {
+class ResponseDishes {
   int? error;
   List<L>? l;
 
-  ResponseApi({
+  ResponseDishes({
     this.error,
     this.l,
   });
 
-  factory ResponseApi.fromJson(String str) => ResponseApi.fromMap(json.decode(str));
+  factory ResponseDishes.fromJson(String str) => ResponseDishes.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory ResponseApi.fromMap(Map<String, dynamic> json) => ResponseApi(
+  factory ResponseDishes.fromMap(Map<String, dynamic> json) => ResponseDishes(
     error: json["error"],
     l: json["l"] == null ? [] : List<L>.from(json["l"]!.map((x) => L.fromMap(x))),
   );
-
 
   Map<String, dynamic> toMap() => {
     "error": error,
@@ -31,20 +24,16 @@ class ResponseApi {
   };
 }
 
-
-
-class L  extends ResponseApi{
+class L {
   String? name;
+  double? price;
+  String? image;
 
   L({
     this.name,
+    this.price,
+    this.image,
   });
-
-
-  @override
-  String toString() {
-    return 'L{name: $name}';
-  }
 
   factory L.fromJson(String str) => L.fromMap(json.decode(str));
 
@@ -52,9 +41,13 @@ class L  extends ResponseApi{
 
   factory L.fromMap(Map<String, dynamic> json) => L(
     name: json["name"],
+    price: json["price"]?.toDouble(),
+    image: json["image"],
   );
 
   Map<String, dynamic> toMap() => {
     "name": name,
+    "price": price,
+    "image": image,
   };
 }

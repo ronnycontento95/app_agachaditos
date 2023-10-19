@@ -1,4 +1,5 @@
 import 'package:app_agachaditos/data/response/response_api.dart';
+import 'package:app_agachaditos/data/response/response_dishes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -7,12 +8,20 @@ import '../../domain/repositories/api_interface.dart';
 
 class ProviderPrincipal extends ChangeNotifier {
   ApiInterface apiInterface;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   ProviderPrincipal(this.apiInterface);
   List<ResponseApi>? listTable = [];
+  List<L>? listDishes = [];
+  int _selectedIndex = 0;
 
-  final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  int get selectedIndex => _selectedIndex!;
+
+  set selectedIndex(int value) {
+    _selectedIndex = value;
+    notifyListeners();
+  }
 
   getTable() {
     apiInterface.responseConsultTable(1, (code, data) {
@@ -23,18 +32,27 @@ class ProviderPrincipal extends ChangeNotifier {
     });
   }
 
+  /// List table
   addListTable(ResponseApi table){
     if(listTable!.isNotEmpty) listTable!.clear();
-    print('PRUEBA >>> INGRESO ${table.toJson()}');
     listTable!.add(table);
     notifyListeners();
   }
 
+  /// List dishes
   getDishes() {
     apiInterface.responsePostDishes((code, data) {
       print('prueba >>>> ingreso $data');
+      addListDishes(data);
       return null;
     });
+  }
+
+  addListDishes(L dishes){
+    if(listDishes!.isNotEmpty) listDishes!.clear();
+    print('>>>>> prueba >>>> ${dishes.toJson()}');
+    listDishes!.add(dishes);
+    notifyListeners();
   }
 
   signInWithGoogle() async {

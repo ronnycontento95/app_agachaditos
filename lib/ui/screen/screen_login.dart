@@ -2,6 +2,7 @@
 
 import 'package:app_agachaditos/ui/provider/provider_principal.dart';
 import 'package:app_agachaditos/ui/screen/screen_home.dart';
+import 'package:app_agachaditos/ui/screen/screen_main.dart';
 import 'package:app_agachaditos/ui/widgets/widget_text_form.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -72,9 +73,9 @@ class ScreenLogin extends StatelessWidget {
       color: Colors.white,
       child: ElevatedButton(
           onPressed: () {
-            Helper().nextPageViewTransition(ScreenHome.routePage);
+            Helper().nextPageViewTransition(ScreenMain.routePage);
           },
-          child: Text("Ingresar")),
+          child: const Text("Ingresar")),
     );
   }
 }

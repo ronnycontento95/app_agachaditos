@@ -5,4 +5,5 @@ class HelperLabel{
   static const routeScreenHome = "ScreenHome";
   static const routeScreenListOrder = "ScreenListOrder";
   static const routeScreenDetailDishes = "ScreenDetailDishes";
+  static const routeScreenMain = "ScreenMain";
 }

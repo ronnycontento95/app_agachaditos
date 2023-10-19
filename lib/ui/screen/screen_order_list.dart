@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import '../help/helper.dart';
 import '../help/helper_label.dart';
-import '../widgets/widget_bottomNavigatorBar.dart';
 
 class ScreenListOrder extends StatelessWidget {
   const ScreenListOrder({Key? key}) : super(key: key);
@@ -16,7 +15,6 @@ class ScreenListOrder extends StatelessWidget {
       value: Colors.white,
       child: Scaffold(
         backgroundColor: Colors.white,
-        bottomNavigationBar: WidgetBottomNavigatorBar(),
         body: SafeArea(
           child: Container(
             // color: Colors.red,
