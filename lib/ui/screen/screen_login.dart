@@ -1,14 +1,12 @@
 
-
-import 'package:app_agachaditos/ui/provider/provider_principal.dart';
-import 'package:app_agachaditos/ui/screen/screen_home.dart';
-import 'package:app_agachaditos/ui/screen/screen_main.dart';
-import 'package:app_agachaditos/ui/widgets/widget_text_form.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../help/helper.dart';
 import '../help/helper_label.dart';
+import '../provider/provider_principal.dart';
+import '../widgets/widget_text_form.dart';
+import 'screen_main.dart';
 
 class ScreenLogin extends StatelessWidget {
   const ScreenLogin({Key? key}) : super(key: key);
@@ -26,7 +24,7 @@ class ScreenLogin extends StatelessWidget {
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [logonApp(),userFormText(), userFormText(), _buttonLogin(), ButtonGoogle()],
+                children: [logonApp(),userFormText(), userFormText(), _buttonLogin(), const ButtonGoogle()],
               ),
             ),
           ),
@@ -86,7 +84,7 @@ class ButtonGoogle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final prPrincipalRead = context.read<ProviderPrincipal>();
-    return Container(
+    return SizedBox(
       width: double.infinity,
       // color: Colors.white,
       child: ElevatedButton(

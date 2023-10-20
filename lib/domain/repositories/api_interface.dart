@@ -6,4 +6,10 @@ abstract class ApiInterface {
 
   Future responsePostDishes(
       VoidCallback? Function(int code, dynamic data) callback);
+
+  Future responsePostOrder( int idUser,
+      VoidCallback? Function(int code, dynamic data) callback);
+
+  Future responsePostOrderDetail( int idOrder,
+      VoidCallback? Function(int code, dynamic data) callback);
 }

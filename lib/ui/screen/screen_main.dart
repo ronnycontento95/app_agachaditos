@@ -1,11 +1,12 @@
-import 'package:app_agachaditos/ui/provider/provider_principal.dart';
-import 'package:app_agachaditos/ui/screen/screen_dishes.dart';
-import 'package:app_agachaditos/ui/screen/screen_home.dart';
-import 'package:app_agachaditos/ui/screen/screen_order_list.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../help/helper_label.dart';
+import '../provider/provider_principal.dart';
+import 'screen_dishes.dart';
+import 'screen_home.dart';
+import 'screen_order.dart';
 
 class ScreenMain extends StatefulWidget {
   static const routePage = HelperLabel.routeScreenMain;
@@ -32,15 +33,16 @@ class _ScreenMainState extends State<ScreenMain> {
         elevation: 0,
         items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              activeIcon: Icon(Icons.home_filled),
+              icon: Icon(Icons.home, color: Colors.black26),
+              activeIcon: Icon(Icons.home_filled, color: Colors.redAccent),
               label: "Inicio",
-              backgroundColor: Colors.yellow),
+
+              backgroundColor: Colors.white),
           BottomNavigationBarItem(
-              icon: Icon(Icons.ac_unit),
-              activeIcon: Icon(Icons.home_filled),
-              label: "Order",
-              backgroundColor: Colors.indigoAccent),
+              icon: Icon(Icons.shopping_cart, color: Colors.black26,),
+              activeIcon: Icon(Icons.shopping_cart, color: Colors.redAccent,),
+              label: "Ordenes",
+              backgroundColor: Colors.white),
         ],
       ),
       body: screens[prPrincipalRead.selectedIndex],

@@ -1,11 +1,12 @@
-import 'package:app_agachaditos/ui/screen/screen_detail_dishes.dart';
-import 'package:app_agachaditos/ui/screen/screen_dishes.dart';
-import 'package:app_agachaditos/ui/screen/screen_home.dart';
-import 'package:app_agachaditos/ui/screen/screen_order_list.dart';
+
 import 'package:flutter/cupertino.dart';
 
+import '../screen/screen_dishes.dart';
+import '../screen/screen_home.dart';
 import '../screen/screen_login.dart';
 import '../screen/screen_main.dart';
+import '../screen/screen_order.dart';
+import '../screen/screen_order_detail.dart';
 
 
 Map<String, WidgetBuilder> routes() {
@@ -15,6 +16,6 @@ Map<String, WidgetBuilder> routes() {
     ScreenHome.routePage: (_) => const ScreenHome(),
     ScreenDishes.routePage: (_) => const ScreenDishes(),
     ScreenListOrder.routePage: (_) => const ScreenListOrder(),
-    ScreenDishes.routePage: (_) => const ScreenDishes()
+    ScreenOrderDetail.routePage: (_) => const ScreenOrderDetail(),
   };
 }

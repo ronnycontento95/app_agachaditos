@@ -1,17 +1,20 @@
-import 'package:app_agachaditos/ui/help/helper.dart';
-import 'package:app_agachaditos/ui/routes/screen_provider.dart';
-import 'package:app_agachaditos/ui/screen/screen_login.dart';
+
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'ui/help/helper.dart';
+import 'ui/routes/screen_provider.dart';
 import 'ui/routes/screen_route.dart';
+import 'ui/screen/screen_login.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();runApp(MyApp(ScreenLogin.routePage));
+  await Firebase.initializeApp();
+  runApp(MyApp(ScreenLogin.routePage));
 }
 
+
+// ignore: must_be_immutable
 class MyApp extends StatelessWidget {
   String routeInit;
   MyApp(this.routeInit, {super.key});

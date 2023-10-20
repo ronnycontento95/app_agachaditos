@@ -1,11 +1,11 @@
-import 'package:app_agachaditos/ui/provider/provider_principal.dart';
-import 'package:app_agachaditos/ui/screen/screen_dishes.dart';
-import 'package:app_agachaditos/ui/screen/screen_order_list.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../help/helper.dart';
 import '../help/helper_label.dart';
+import '../provider/provider_principal.dart';
+import 'screen_dishes.dart';
 
 class ScreenHome extends StatefulWidget {
   const ScreenHome({Key? key}) : super(key: key);
@@ -47,8 +47,6 @@ class _ScreenHomeState extends State<ScreenHome> {
             child:  const SingleChildScrollView(
               child: Column(
                 children: [
-                  // _cardOrdes(),
-                  // _cardPayment(),
                   ResponsiveGridView()],
               ),
             ),
@@ -58,55 +56,7 @@ class _ScreenHomeState extends State<ScreenHome> {
     );
   }
 
-  Widget _cardOrdes(){
-    return GestureDetector(
-      onTap: (){
-        Helper().nextPageViewTransition(ScreenListOrder.routePage);
-      },
-      child: Container(
-        padding: const EdgeInsets.all(10),
-        color: Colors.lightBlue,
-        margin: const EdgeInsets.only(bottom: 10),
-        child: const Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 25,
-              child: Text("ORDENES"),
-            ),
-            Spacer(),
-            Icon(Icons.arrow_circle_right_outlined, size: 25,color: Colors.red,)
 
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _cardPayment(){
-    return GestureDetector(
-      onTap: (){
-        Helper().nextPageViewTransition(ScreenListOrder.routePage);
-      },
-      child: Container(
-        padding: const EdgeInsets.all(10),
-        color: Colors.lightBlue,
-        margin: const EdgeInsets.only(bottom: 10),
-        child: const Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 25,
-              child: Text("COBROS"),
-            ),
-            Spacer(),
-            Icon(Icons.arrow_circle_right_outlined, size: 25,color: Colors.red,)
-
-          ],
-        ),
-      ),
-    );
-  }
 }
 
 class ResponsiveGridView extends StatelessWidget {
@@ -171,4 +121,3 @@ class ResponsiveGridView extends StatelessWidget {
   }
 }
 
-enum _SelectedTab { home, favorite, search, person }

@@ -1,12 +1,12 @@
-import 'package:app_agachaditos/ui/help/helper.dart';
-import 'package:app_agachaditos/ui/provider/provider_principal.dart';
-import 'package:app_agachaditos/ui/screen/screen_home.dart';
-import 'package:app_agachaditos/ui/screen/screen_order_list.dart';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../help/helper.dart';
 import '../help/helper_label.dart';
+import '../provider/provider_principal.dart';
+import 'screen_order.dart';
 
 class ScreenDishes extends StatelessWidget {
   const ScreenDishes({Key? key}) : super(key: key);
@@ -42,7 +42,7 @@ class ScreenDishes extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               // mainAxisAlignment: MainAxisAlignment.center,
-              children: [const CardViewDishes(), MoreAndLess(),  _buttonDishes()],
+              children: [const CardViewDishes(), const MoreAndLess(),  _buttonDishes()],
             ),
           ),
         ),
@@ -59,7 +59,7 @@ class ScreenDishes extends StatelessWidget {
               onPressed: () {
                 Helper().nextPageViewTransition(ScreenListOrder.routePage);
               },
-              child: Text("Guardar pedido"))),
+              child: const Text("Guardar pedido"))),
     );
   }
 }
@@ -108,7 +108,7 @@ class CardViewDishes extends StatelessWidget {
                 const Icon(Icons.collections_outlined),
                 Text("${prPrincipalRead.listDishes![index].name}"),
                 Text("${prPrincipalRead.listDishes![index].price}"),
-                MoreAndLess()
+                const MoreAndLess()
               ],
             ),
           );

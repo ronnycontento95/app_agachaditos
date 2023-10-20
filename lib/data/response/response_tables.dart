@@ -1,10 +1,7 @@
 import 'dart:convert';
 
-import 'package:app_agachaditos/data/response/response_api.dart';
 
-import 'dart:convert';
 
-import 'response_tables.dart';
 
 class ResponseApi {
   int? error;
@@ -48,12 +45,14 @@ class L  extends ResponseApi{
 
   factory L.fromJson(String str) => L.fromMap(json.decode(str));
 
+  @override
   String toJson() => json.encode(toMap());
 
   factory L.fromMap(Map<String, dynamic> json) => L(
     name: json["name"],
   );
 
+  @override
   Map<String, dynamic> toMap() => {
     "name": name,
   };

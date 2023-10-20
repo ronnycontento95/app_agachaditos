@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-enum enumTypeText {
+enum EnumTypeText {
   text,
   number
 }
@@ -36,7 +36,7 @@ class WidgetTextForm extends StatefulWidget {
   final AutovalidateMode? autovalidateMode;
 
   final bool showClean;
-  final enumTypeText typeText;
+  final EnumTypeText typeText;
 
   const WidgetTextForm(
       {Key? key,
@@ -66,7 +66,7 @@ class WidgetTextForm extends StatefulWidget {
         this.padding = const EdgeInsets.all(20),
         this.autocorrect = true,
         this.showClean = false,
-        this.typeText = enumTypeText.text})
+        this.typeText = EnumTypeText.text})
       : super(key: key);
 
   @override
