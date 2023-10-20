@@ -62,7 +62,7 @@ class ApiRest implements ApiInterface {
           print("RESPONSE >>> DATA NULL DISHES");
         }
       }
-      callback(response.data["error"], callback(response.data["l"]);
+      callback(response.data["error"], ResponseDishes.fromMap(response.data));
     } on DioException catch (e) {
       if (kDebugMode) {
         print('ERROR >>> $e');

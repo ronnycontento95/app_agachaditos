@@ -42,7 +42,7 @@ class ScreenDishes extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               // mainAxisAlignment: MainAxisAlignment.center,
-              children: [const CardViewDishes(), _buttonDishes()],
+              children: [const CardViewDishes(), MoreAndLess(),  _buttonDishes()],
             ),
           ),
         ),
@@ -64,28 +64,56 @@ class ScreenDishes extends StatelessWidget {
   }
 }
 
+class MoreAndLess extends StatelessWidget {
+  const MoreAndLess({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final prPrincipalRead = context.watch<ProviderPrincipal>();
+    return Row(
+      children: [
+        IconButton(
+            onPressed: prPrincipalRead.numberDishes == 1
+                ? null
+                : () => prPrincipalRead.numberDishes = prPrincipalRead.numberDishes - 1,
+            icon: const Icon(Icons.remove)),
+        Text("${prPrincipalRead.numberDishes}"),
+        IconButton(
+            onPressed: () =>
+            prPrincipalRead.numberDishes = prPrincipalRead.numberDishes + 1,
+            icon: const Icon(Icons.add)),
+      ], );
+  }
+}
+
+
 class CardViewDishes extends StatelessWidget {
   const CardViewDishes({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final prPrincipalRead = context.watch<ProviderPrincipal>();
-    print(' >>>>> ${prPrincipalRead.listDishes!.length}');
-    return Container(
-      height: 300,
-      width: 300,
-      color: Colors.redAccent,
-      child: ListView.builder(
-          shrinkWrap: true,
-          physics: const BouncingScrollPhysics(),
-          scrollDirection: Axis.horizontal,
-          itemCount: prPrincipalRead.listDishes!.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Container(
-              child: Text("${prPrincipalRead.listDishes![index].name}"),
-            );
-          }),
+    return Wrap(
+      direction: Axis.horizontal,
+      children: List.generate(
+        prPrincipalRead.listDishes!.length,
+            (int index) {
+          return Container(
+            height: 120,
+            width: 120,
+            color: Colors.black12,
+            margin: const EdgeInsets.all(8),
+            child: Column(
+              children: [
+                const Icon(Icons.collections_outlined),
+                Text("${prPrincipalRead.listDishes![index].name}"),
+                Text("${prPrincipalRead.listDishes![index].price}"),
+                MoreAndLess()
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
-
 }

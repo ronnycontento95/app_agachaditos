@@ -14,9 +14,17 @@ class ProviderPrincipal extends ChangeNotifier {
   List<ResponseApi>? listTable = [];
   List<L>? listDishes = [];
   int _selectedIndex = 0;
+  int _numberDishes = 1;
 
 
-  int get selectedIndex => _selectedIndex!;
+  int get numberDishes => _numberDishes;
+
+  set numberDishes(int value) {
+    _numberDishes = value;
+    notifyListeners();
+  }
+
+  int get selectedIndex => _selectedIndex;
 
   set selectedIndex(int value) {
     _selectedIndex = value;
@@ -42,16 +50,14 @@ class ProviderPrincipal extends ChangeNotifier {
   /// List dishes
   getDishes() {
     apiInterface.responsePostDishes((code, data) {
-      print('prueba >>>> ingreso $data');
       addListDishes(data);
       return null;
     });
   }
 
-  addListDishes(L dishes){
+  addListDishes(ResponseDishes responseDishes){
     if(listDishes!.isNotEmpty) listDishes!.clear();
-    print('>>>>> prueba >>>> ${dishes.toJson()}');
-    listDishes!.add(dishes);
+    listDishes!.addAll(responseDishes.l!);
     notifyListeners();
   }
 
@@ -68,9 +74,7 @@ class ProviderPrincipal extends ChangeNotifier {
           accessToken: googleAuth.accessToken,
           idToken: googleAuth.idToken,
         );
-        print('>>>>>>>> $credential');
         await _auth.signInWithCredential(credential).then((value)async{
-          print('prueba >>>> ${value.user!.displayName} ${value.user!.email}');
         });
       }else{
         print('prueba >>>> error');
