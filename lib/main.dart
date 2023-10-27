@@ -1,4 +1,5 @@
 
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
           iconTheme: const IconThemeData(color: Color(0xffd62f2e)),
           appBarTheme: const AppBarTheme(color: Color(0xffd62f2e)),
           colorScheme: const ColorScheme.light(primary: Colors.black),
+          primaryColor: Colors.red,
           useMaterial3: true,
           textTheme: const TextTheme(
               displayLarge: TextStyle(color: Colors.black12), //blanco

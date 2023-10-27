@@ -13,6 +13,7 @@ class ScreenListOrder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final prPrincipalRead = context.watch<ProviderPrincipal>();
     context.read<ProviderPrincipal>().getOrder();
     return AnnotatedRegion(
       value: Colors.white,
@@ -46,7 +47,7 @@ class CardOrder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final prPrincipalRead = context.read<ProviderPrincipal>();
+    final prPrincipalRead = context.watch<ProviderPrincipal>();
 
     return SizedBox(
       height: 200,

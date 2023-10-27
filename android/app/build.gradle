@@ -63,6 +63,16 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+    flavorDimensions "flavor-type"
+    productFlavors {
+        pinoschiclayo {
+            dimension "flavor-type"
+            applicationId "com.example.development"
+            resValue "string", "app_name", "Development"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+    }
 }
 
 flutter {

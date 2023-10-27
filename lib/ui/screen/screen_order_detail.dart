@@ -55,7 +55,7 @@ class OrderDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final prPrincipalRead = context.read<ProviderPrincipal>();
+    final prPrincipalRead = context.watch<ProviderPrincipal>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,

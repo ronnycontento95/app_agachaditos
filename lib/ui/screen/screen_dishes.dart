@@ -1,4 +1,4 @@
-
+import 'package:app_agachaditos/ui/screen/screen_main.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -15,9 +15,32 @@ class ScreenDishes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<ProviderPrincipal>().getDishes();
+    final prPrincipalRead = context.watch<ProviderPrincipal>();
+
     return AnnotatedRegion(
       value: Colors.white,
       child: Scaffold(
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.shifting,
+          currentIndex: prPrincipalRead.selectedIndex,
+          onTap: (value) {
+            prPrincipalRead.selectedIndex= value;
+          },
+          elevation: 0,
+          items: const [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.home, color: Colors.black26),
+                activeIcon: Icon(Icons.home_filled, color: Colors.redAccent),
+                label: "Inicio",
+
+                backgroundColor: Colors.white),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_cart, color: Colors.black26,),
+                activeIcon: Icon(Icons.shopping_cart, color: Colors.redAccent,),
+                label: "Ordenes",
+                backgroundColor: Colors.white),
+          ],
+        ),
         appBar: AppBar(
           title: const AutoSizeText(
             "Pedido",
@@ -32,36 +55,82 @@ class ScreenDishes extends StatelessWidget {
             icon: const Icon(Icons.arrow_back_ios, size: 20),
           ),
           elevation: 0,
+          centerTitle: false,
+          actions: [
+            IconButton(
+              onPressed: () {
+                showAlertDialog(context);
+              },
+              icon: Row(
+                children: [
+                  Icon(
+                    Icons.add_shopping_cart,
+                    color: Theme.of(context).primaryColor,
+                    size: 20,
+                  ),
+                  Text("Agregar",
+                      style: TextStyle(color: Theme.of(context).primaryColor)),
+                ],
+              ),
+            ),
+          ],
           backgroundColor: Colors.white,
         ),
         backgroundColor: Colors.white,
-        body: SafeArea(
-          child: SizedBox(
-            // color: Colors.red,
-            width: double.infinity,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: [const CardViewDishes(), const MoreAndLess(),  _buttonDishes()],
+        body: Stack(
+          children: [
+            Container(
+              color: Colors.white,
+              width: double.infinity,
+              child: const SingleChildScrollView(
+                child: Column(
+                  children: [
+                    CardViewDishes(),
+                  ],
+                ),
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );
   }
 
-  Widget _buttonDishes() {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: SizedBox(
-          width: double.infinity,
-          child: ElevatedButton(
-              onPressed: () {
-                Helper().nextPageViewTransition(ScreenListOrder.routePage);
-              },
-              child: const Text("Guardar pedido"))),
+  showAlertDialog(BuildContext context) {
+    // set up the buttons
+    Widget cancelButton = TextButton(
+      child: Text("Cancel"),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
+    Widget continueButton = TextButton(
+      child: Text("Continue"),
+      onPressed: () {
+        Helper().nextPageViewTransition(ScreenMain.routePage);
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("AlertDialog"),
+      content: Text(
+          "Would you like to continue learning how to use Flutter alerts?"),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
+
 }
 
 class MoreAndLess extends StatelessWidget {
@@ -75,17 +144,18 @@ class MoreAndLess extends StatelessWidget {
         IconButton(
             onPressed: prPrincipalRead.numberDishes == 1
                 ? null
-                : () => prPrincipalRead.numberDishes = prPrincipalRead.numberDishes - 1,
+                : () => prPrincipalRead.numberDishes =
+                    prPrincipalRead.numberDishes - 1,
             icon: const Icon(Icons.remove)),
         Text("${prPrincipalRead.numberDishes}"),
         IconButton(
             onPressed: () =>
-            prPrincipalRead.numberDishes = prPrincipalRead.numberDishes + 1,
+                prPrincipalRead.numberDishes = prPrincipalRead.numberDishes + 1,
             icon: const Icon(Icons.add)),
-      ], );
+      ],
+    );
   }
 }
-
 
 class CardViewDishes extends StatelessWidget {
   const CardViewDishes({Key? key}) : super(key: key);
@@ -93,22 +163,29 @@ class CardViewDishes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final prPrincipalRead = context.watch<ProviderPrincipal>();
-    return Wrap(
-      direction: Axis.horizontal,
-      children: List.generate(
-        prPrincipalRead.listDishes!.length,
-            (int index) {
-          return Container(
-            height: 120,
-            width: 120,
-            color: Colors.black12,
-            margin: const EdgeInsets.all(8),
+
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.6,
+      child: ListView.builder(
+        shrinkWrap: true,
+        scrollDirection: Axis.vertical,
+        itemCount: prPrincipalRead.listDishes!.length,
+        itemBuilder: (context, index) {
+          final dish = prPrincipalRead.listDishes![index];
+          return Card(
             child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Icon(Icons.collections_outlined),
-                Text("${prPrincipalRead.listDishes![index].name}"),
-                Text("${prPrincipalRead.listDishes![index].price}"),
-                const MoreAndLess()
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: ListTile(
+                    leading: const Icon(Icons.collections_outlined),
+                    title: Text("${dish.name} \n ${dish.price}"),
+                  ),
+                ),
+                // const MoreAndLess(),
               ],
             ),
           );
